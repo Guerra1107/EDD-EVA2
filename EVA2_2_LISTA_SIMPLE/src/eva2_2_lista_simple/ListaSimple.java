@@ -1,37 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package eva2_2_lista_simple;
 
-/**
- *
- * @author Luis
- */
 public class ListaSimple {
     private Nodo inicio;
     private Nodo fin;
     
     public ListaSimple(){
-        fin = null; // al estar la lista, se crea vacia
+        fin = null; 
         inicio = null;
-}   //O(N) --> se agrega al final, 
-    // siempre se agrega al final de la lista
-    
+}   
     public void agregar (int valor){
-        Nodo nuevo = new Nodo(valor); // Creamos el nodo con el valor
+        Nodo nuevo = new Nodo(valor); 
         
         if (inicio == null){
-            // Si la lista está vacía, el nuevo nodo es tanto el inicio como el fin
+           
             inicio = nuevo;
             fin = nuevo;
         } else {
-            // Si ya hay elementos, conectamos el nuevo nodo al final usando 'fin'
+            
             fin.setSiguente(nuevo);
-            fin = nuevo; // Actualizamos 'fin' para que ahora sea este nuevo nodo
+            fin = nuevo; 
         }
     }
-    // O(N) 
     public void imprimir(){
         Nodo temp = inicio;
         while(temp != null){
@@ -40,7 +30,7 @@ public class ListaSimple {
             
         }
     }
-    // O(N)
+ 
     public int longitud(){
         int cont = 0;
         Nodo temp = inicio;
@@ -50,9 +40,9 @@ public class ListaSimple {
         }
         return cont;
     }
-    // O(1)
+  
     public boolean listaVacia(){
-        if (inicio == null){// Lista vacia
+        if (inicio == null){
             return true;
         }else{
             return false;
@@ -62,11 +52,9 @@ public class ListaSimple {
         inicio = null;
         fin = null;
     }
-    // validar posicion tenga valor valido\
-    // throws
+
     public int valorEn(int posicion){
-        // exepcion
-       // O(N)
+
        int tama = longitud();
        if(posicion >= 0 && posicion < tama){
            
@@ -80,10 +68,7 @@ public class ListaSimple {
        }
         
     }
-    // regresa la primer aparicion del valor en la lista 
-    // Regresa la posicion 
-    // O (??)
-    
+
     public int encontrarEn(int valor){
         Nodo temp = inicio;
         int posicion = 0;
@@ -104,7 +89,7 @@ public class ListaSimple {
             throw new RuntimeException("La posición " + posicion + " no es válida para insertar");
         }
         
-        if(posicion == 0){ // Insertar al inicio
+        if(posicion == 0){ 
             Nodo nuevo = new Nodo(valor);
             nuevo.setSiguente(inicio);
             inicio = nuevo;
@@ -114,12 +99,11 @@ public class ListaSimple {
             return;
         }
         
-        if(posicion == tama){ // Insertar al final
+        if(posicion == tama){ 
             agregar(valor);
             return;
         }
         
-        // Insertar en medio
         Nodo nuevo = new Nodo(valor);
         Nodo temp = inicio;
         for(int i = 0; i < posicion - 1; i++){
@@ -134,10 +118,10 @@ public class ListaSimple {
             throw new RuntimeException("La posición " + posicion + " no es válida para borrar");
         }
         
-        if(posicion == 0){ // Borrar el primer nodo
+        if(posicion == 0){ 
             inicio = inicio.getSiguente();
             if(inicio == null){
-                fin = null; // Si la lista se quedó vacía
+                fin = null; 
             }
             return;
         }
@@ -151,7 +135,7 @@ public class ListaSimple {
         temp.setSiguente(nodoAEliminar.getSiguente());
         
         if(nodoAEliminar == fin){
-            fin = temp; // Actualizamos el fin si eliminamos el último elemento
+            fin = temp; 
         }
     }
     private void imprimirAlReves(Nodo temp) {
@@ -163,7 +147,5 @@ public class ListaSimple {
         System.out.println("[" + temp.getDato() + "]");
     }
     
-    //insertar 
-    //inversa 
-    //
+ 
 }
